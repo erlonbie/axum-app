@@ -1,0 +1,15 @@
+[workspace]
+resolver = "2"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+authors = ["Erlon Bié<erlonbieh@gmail.com>"]
+repository = "https://github.com/erlonbie/axum-app"
+edition = "2024"
+rust-version = "1.91.0"
+
+[workspace.dependencies]
+
+[profile.dev]
+opt-level = 1
