@@ -1,0 +1,14 @@
+[package]
+name = "axum-app_entity"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "axum-app/entity"
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+sea-orm.workspace = true
+uuid.workspace = true

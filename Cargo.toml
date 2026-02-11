@@ -10,9 +10,11 @@ edition = "2024"
 rust-version = "1.91.0"
 
 [workspace.dependencies]
+entity = { path = "crates/entity" }
 config = { path = "crates/config" }
 
 sea-orm = { version = "2.0.0-rc.30", features = ["postgres-array", "sqlx-postgres", "runtime-tokio-native-tls", "with-ipnetwork"] }
+uuid = { version = "1.20.0", features = ["v7", "v4"] }
 dotenvy = "0.15.7"
 
 [profile.dev]
