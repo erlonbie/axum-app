@@ -3,8 +3,13 @@ use axum::{
     Router,
 };
 
+use server::utils::logger::init_tracing;
+
 #[tokio::main]
 async fn main() {
+    dotenvy::dotenv().ok();
+
+    init_tracing();
     // build our application with a single route
     let app = Router::new().route("/", get(handler));
 
