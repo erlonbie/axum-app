@@ -1,23 +1,20 @@
-use axum::{
-    routing::get,
-    Router,
-};
+use axum::{Router, routing::get};
 
-use server::utils::logger::init_tracing;
+use server::{connection::database_conn::{establish_read_connection, establish_write_connection}, utils::logger::init_tracing};
+
+async fn run_server() -> anyhow::Result<()> {
+    let write_db = establish_write_connection().await;
+    let read_db = establish_read_connection().await;
+    Ok(())
+}
 
 #[tokio::main]
 async fn main() {
     dotenvy::dotenv().ok();
 
     init_tracing();
-    // build our application with a single route
-    let app = Router::new().route("/", get(handler));
 
-    // run our app with hyper, listening globally on port 3000
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
-    axum::serve(listener, app).await.unwrap();
-}
-
-async fn handler() -> &'static str {
-    "Hello, World!"
+    if let Err(err) = run_server().await {
+        eprintln!("Application error: {}", err);
+    }
 }
