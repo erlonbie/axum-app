@@ -10,9 +10,9 @@ edition = "2024"
 rust-version = "1.91.0"
 
 [workspace.dependencies]
-entity = { path = "crates/entity" }
-config = { path = "crates/config" }
-server = { path = "crates/server" }
+axum-app_entity = { path = "crates/entity" }
+axum-app_config = { path = "crates/config" }
+axum-app_server = { path = "crates/server" }
 
 sea-orm = { version = "2.0.0-rc.30", features = ["postgres-array", "sqlx-postgres", "runtime-tokio-native-tls", "with-ipnetwork"] }
 uuid = { version = "1.20.0", features = ["v7", "v4"] }
