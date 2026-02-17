@@ -41,7 +41,7 @@ async fn run_server() -> anyhow::Result<()> {
 
     axum::serve(
         listener,
-        app
+        app.into_make_service_with_connect_info::<SocketAddr>(),
     )
     .await?;
 
