@@ -23,6 +23,9 @@ pub struct ServerConfig {
     pub db_read_password: String,
     pub db_read_max_connection: u32,
     pub db_read_min_connection: u32,
+
+    pub server_host: String,
+    pub server_port: String,
 }
 
 // Automatically initialized with LazyLock
@@ -55,6 +58,9 @@ static CONFIG: LazyLock<ServerConfig> = LazyLock::new(|| {
     let db_read_name = require!("POSTGRES_READ_NAME");
     let db_read_user = require!("POSTGRES_READ_USER");
     let db_read_password = require!("POSTGRES_READ_PASSWORD");
+
+    let server_host = require!("HOST");
+    let server_port = require!("PORT");
 
     // Panic with all errors at once
     if !errors.is_empty() {
@@ -97,6 +103,8 @@ static CONFIG: LazyLock<ServerConfig> = LazyLock::new(|| {
             .ok()
             .and_then(|v| v.parse().ok())
             .unwrap_or(10),
+        server_host,
+        server_port
 
     }
 });

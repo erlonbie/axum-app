@@ -1,6 +1,8 @@
 use axum::{Router, routing::get};
 
+use axum_app_config::ServerConfig;
 use server::{
+    appstate::AppState,
     connection::{
         database_conn::{establish_read_connection, establish_write_connection},
         http_conn::create_http_client,
@@ -17,6 +19,19 @@ async fn run_server() -> anyhow::Result<()> {
         error!("Failed to create http client: {}", e);
         anyhow::anyhow!("Http client creation failed: {}", e)
     })?;
+
+    let server_url = format!(
+        "{}:{}",
+        &ServerConfig::get().server_host,
+        &ServerConfig::get().server_port
+    );
+
+    let state = AppState {
+        http_client,
+        write_db,
+        read_db,
+    };
+
     Ok(())
 }
 
