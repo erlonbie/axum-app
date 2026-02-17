@@ -1,4 +1,5 @@
 use axum::{Router, routing::get};
+use std::net::SocketAddr;
 
 use axum_app_config::ServerConfig;
 use server::{
@@ -31,6 +32,18 @@ async fn run_server() -> anyhow::Result<()> {
         write_db,
         read_db,
     };
+
+    let app = Router::new()
+        .route("/health", get(|| async { "OK" }))
+        .with_state(state);
+
+    let listener = tokio::net::TcpListener::bind(&server_url).await?;
+
+    axum::serve(
+        listener,
+        app
+    )
+    .await?;
 
     Ok(())
 }
