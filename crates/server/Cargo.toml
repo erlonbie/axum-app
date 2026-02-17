@@ -24,3 +24,4 @@ tracing-subscriber.workspace = true
 tracing-appender.workspace = true
 anyhow.workspace = true
 sea-orm.workspace = true
+reqwest.workspace = true
