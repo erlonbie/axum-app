@@ -3,12 +3,10 @@ use std::net::SocketAddr;
 
 use axum_app_config::ServerConfig;
 use server::{
-    appstate::AppState,
-    connection::{
+    api::router::api_routes, appstate::AppState, connection::{
         database_conn::{establish_read_connection, establish_write_connection},
         http_conn::create_http_client,
-    },
-    utils::logger::init_tracing,
+    }, utils::logger::init_tracing
 };
 use tracing::error;
 
@@ -34,7 +32,7 @@ async fn run_server() -> anyhow::Result<()> {
     };
 
     let app = Router::new()
-        .route("/health", get(|| async { "OK" }))
+        .merge(api_routes(state.clone()))
         .with_state(state);
 
     let listener = tokio::net::TcpListener::bind(&server_url).await?;
