@@ -15,6 +15,7 @@ path = "src/main.rs"
 
 [dependencies]
 axum-app_config.workspace = true
+axum-app_errors.workspace = true
 
 axum.workspace = true
 tokio.workspace = true

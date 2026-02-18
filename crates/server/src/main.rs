@@ -1,4 +1,4 @@
-use axum::{Router, routing::get};
+use axum::Router;
 use std::net::SocketAddr;
 
 use axum_app_config::ServerConfig;

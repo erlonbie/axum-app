@@ -1,0 +1,13 @@
+[package]
+name = "axum-app_errors"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+description = "axum-app/errors"
+
+[dependencies]
+axum-app_config.workspace = true
+
+axum.workspace = true
+tracing.workspace = true
+serde.workspace = true

@@ -335,12 +335,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "axum-app_errors"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "axum-app_config",
+ "serde",
+ "tracing",
+]
+
+[[package]]
 name = "axum-app_server"
 version = "0.1.0"
 dependencies = [
  "anyhow",
  "axum",
  "axum-app_config",
+ "axum-app_errors",
  "dotenvy",
  "reqwest",
  "sea-orm",

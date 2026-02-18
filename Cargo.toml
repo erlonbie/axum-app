@@ -13,6 +13,7 @@ rust-version = "1.91.0"
 axum-app_entity = { path = "crates/entity" }
 axum-app_config = { path = "crates/config" }
 axum-app_server = { path = "crates/server" }
+axum-app_errors = { path = "crates/errors" }
 
 sea-orm = { version = "2.0.0-rc.30", features = ["postgres-array", "sqlx-postgres", "runtime-tokio-native-tls", "with-ipnetwork"] }
 uuid = { version = "1.20.0", features = ["v7", "v4"] }
@@ -24,6 +25,7 @@ tracing-subscriber = { version = "0.3.22", features = ["json", "env-filter"] }
 tracing-appender = "0.2.4"
 anyhow = "1.0.100"
 reqwest = { version = "0.12.28", features = ["json", "multipart"] }
+serde = { version = "1.0.228", features = ["derive"] }
 
 [profile.dev]
 opt-level = 1
