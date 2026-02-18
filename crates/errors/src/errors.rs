@@ -3,6 +3,7 @@ use axum::{
 };
 use axum_app_config::ServerConfig;
 use serde::Serialize;
+use utoipa::ToSchema;
 
 use crate::handlers::{system_handler, user_handler};
 
@@ -12,7 +13,7 @@ impl IntoResponse for ErrorResponse {
     }
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, ToSchema)]
 pub struct ErrorResponse {
     pub status: u16,
     pub code: String,

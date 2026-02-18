@@ -26,3 +26,5 @@ tracing-appender.workspace = true
 anyhow.workspace = true
 sea-orm.workspace = true
 reqwest.workspace = true
+utoipa-swagger-ui.workspace = true
+utoipa.workspace = true

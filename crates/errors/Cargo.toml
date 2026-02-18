@@ -11,3 +11,4 @@ axum-app_config.workspace = true
 axum.workspace = true
 tracing.workspace = true
 serde.workspace = true
+utoipa.workspace = true
