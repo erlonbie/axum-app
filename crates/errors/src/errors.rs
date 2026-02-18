@@ -77,7 +77,7 @@ impl IntoResponse for Errors {
     }
 }
 
-pub async fn handler_404<B>(req: axum::extract::Request<B>) -> impl IntoResponse {
+pub async fn handler_404(req: axum::extract::Request) -> impl IntoResponse {
     let path = req.uri().path();
     let method = req.method().to_string();
 
