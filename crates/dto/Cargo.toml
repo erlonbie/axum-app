@@ -1,0 +1,15 @@
+[package]
+name = "axum-app_dto"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+description = "axum-app/dto"
+
+[dependencies]
+axum-app_config.workspace = true
+axum-app_errors.workspace = true
+
+serde = { workspace = true, features = ["derive"] }
+validator = { workspace = true, features = ["derive"] }
+utoipa.workspace = true
+axum.workspace = true

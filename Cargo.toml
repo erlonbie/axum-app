@@ -14,6 +14,7 @@ axum-app_entity = { path = "crates/entity" }
 axum-app_config = { path = "crates/config" }
 axum-app_server = { path = "crates/server" }
 axum-app_errors = { path = "crates/errors" }
+axum-app_dto    = { path = "crates/dto" }
 
 sea-orm = { version = "2.0.0-rc.30", features = ["postgres-array", "sqlx-postgres", "runtime-tokio-native-tls", "with-ipnetwork"] }
 uuid = { version = "1.20.0", features = ["v7", "v4"] }
@@ -29,6 +30,7 @@ serde = { version = "1.0.228", features = ["derive"] }
 utoipa-swagger-ui = { version = "9.0.2", features = ["axum", "debug-embed"] }
 utoipa = { version = "5.4.0", features = ["axum_extras", "openapi_extensions", "time", "uuid", "chrono"] }
 tower-http = { version = "0.6.8", features = ["cors", "auth", "trace", "request-id"] }
+validator = { version = "0.20.0", features = ["derive"] }
 
 [profile.dev]
 opt-level = 1
