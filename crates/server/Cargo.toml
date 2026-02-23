@@ -31,3 +31,4 @@ reqwest.workspace = true
 utoipa-swagger-ui.workspace = true
 utoipa.workspace = true
 tower-http.workspace = true
+uuid.workspace = true
