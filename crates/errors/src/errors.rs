@@ -2,8 +2,11 @@ use axum::{
     Json, http::StatusCode, response::{IntoResponse, Response}
 };
 use axum_app_config::ServerConfig;
+use sea_orm::DbErr;
 use serde::Serialize;
 use utoipa::ToSchema;
+
+pub type ServiceResult<T> = Result<T, Errors>;
 
 use crate::handlers::{system_handler, user_handler};
 
@@ -18,6 +21,13 @@ pub struct ErrorResponse {
     pub status: u16,
     pub code: String,
     pub details: Option<String>,
+}
+
+
+impl From<DbErr> for Errors {
+    fn from(err: DbErr) -> Self {
+        Errors::DatabaseError(err.to_string())
+    }
 }
 
 #[derive(Debug)]
@@ -50,6 +60,10 @@ pub enum Errors {
     NotFound(String),
     HashingError(String),
     TokenCreationError(String),
+
+    // General errors
+    BadRequestError(String),
+    ValidationError(String),
 }
 
 impl IntoResponse for Errors {

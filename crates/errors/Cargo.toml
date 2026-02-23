@@ -12,3 +12,4 @@ axum.workspace = true
 tracing.workspace = true
 serde.workspace = true
 utoipa.workspace = true
+sea-orm = { workspace = true }
