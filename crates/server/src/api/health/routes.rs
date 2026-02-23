@@ -2,7 +2,7 @@ use axum::{Router, routing::get};
 
 use crate::{
     api::health::health_check::health_check,
-    appstate::{self, AppState},
+    appstate::AppState,
 };
 
 pub fn health_routes() -> Router<AppState> {
