@@ -70,4 +70,3 @@ pub fn map_response(error: &Errors) -> Option<(StatusCode, &'static str, Option<
         _ => None, // Return None for errors from other domains
     }
 }
-

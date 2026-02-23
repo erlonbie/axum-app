@@ -1,5 +1,7 @@
 use axum::{
-    Json, http::StatusCode, response::{IntoResponse, Response}
+    Json,
+    http::StatusCode,
+    response::{IntoResponse, Response},
 };
 use axum_app_config::ServerConfig;
 use sea_orm::DbErr;
@@ -22,7 +24,6 @@ pub struct ErrorResponse {
     pub code: String,
     pub details: Option<String>,
 }
-
 
 impl From<DbErr> for Errors {
     fn from(err: DbErr) -> Self {

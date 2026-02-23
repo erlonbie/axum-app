@@ -1,4 +1,7 @@
-use axum::{Json, extract::{FromRequest, Request}};
+use axum::{
+    Json,
+    extract::{FromRequest, Request},
+};
 use axum_app_errors::Errors;
 use validator::Validate;
 

@@ -1,2 +1,2 @@
-pub mod validator;
 pub mod user;
+pub mod validator;

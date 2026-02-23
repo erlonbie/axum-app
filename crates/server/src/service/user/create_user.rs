@@ -18,14 +18,13 @@ pub async fn service_create_user(
     //     return Err(Errors::UserEmailAlreadyExists);
     // }
 
-
     // // Check if user already exists by handle
     // let existing_user_by_handle =
     //     repository_find_user_by_handle(&txn, payload.handle.clone()).await?;
     // if existing_user_by_handle.is_some() {
     //     return Err(Errors::UserHandleAlreadyExists);
     // }
-    
+
     // Create user in database
     let _user = repository_create_user(
         &txn,

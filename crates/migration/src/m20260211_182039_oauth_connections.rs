@@ -111,4 +111,3 @@ enum UserOAuthConnections {
     ProviderUserId,
     CreatedAt,
 }
-

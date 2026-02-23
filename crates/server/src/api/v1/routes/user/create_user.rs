@@ -1,9 +1,6 @@
 use axum::{Json, extract::State, response::IntoResponse};
 use axum_app_dto::{
-    user::{
-        request::create_user::CreateUserRequest,
-        response::create_user::CreateUserResponse,
-    },
+    user::{request::create_user::CreateUserRequest, response::create_user::CreateUserResponse},
     validator::json_validator::ValidatedJson,
 };
 use axum_app_errors::Errors;

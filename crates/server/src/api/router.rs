@@ -1,7 +1,7 @@
+use crate::api::openapi::ApiDoc;
 use axum::Router;
 use axum_app_errors::handler_404;
 use utoipa_swagger_ui::SwaggerUi;
-use crate::api::openapi::ApiDoc;
 
 use crate::api::v1::routes::routes::v1_routes;
 use crate::{api::health::routes::health_routes, appstate::AppState};

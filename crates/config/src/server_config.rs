@@ -1,8 +1,8 @@
 use axum::http::{HeaderName, HeaderValue};
 use dotenvy::dotenv;
-use tracing::warn;
 use std::env;
 use std::sync::LazyLock;
+use tracing::warn;
 
 #[derive(Debug, Clone)]
 pub struct ServerConfig {
@@ -165,7 +165,6 @@ static CONFIG: LazyLock<ServerConfig> = LazyLock::new(|| {
         cors_allowed_origins: cors_origins,
         cors_allowed_headers: cors_headers,
         cors_max_age: env::var("CORS_MAX_AGE").ok().and_then(|v| v.parse().ok()),
-
     }
 });
 
@@ -175,4 +174,3 @@ impl ServerConfig {
         &CONFIG
     }
 }
-

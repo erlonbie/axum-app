@@ -1,7 +1,6 @@
 use axum_app_dto::user::response::create_user::CreateUserResponse;
 use utoipa::OpenApi;
 
-
 #[derive(OpenApi)]
 #[openapi(
     paths(

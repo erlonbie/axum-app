@@ -77,4 +77,3 @@ pub enum Posts {
     CreatedAt,
     UpdatedAt,
 }
-

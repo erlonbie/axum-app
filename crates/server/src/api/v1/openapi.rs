@@ -2,7 +2,6 @@ use utoipa::OpenApi;
 
 use crate::api::v1::routes::user::openapi::UserApiDoc;
 
-
 #[derive(OpenApi)]
 #[openapi()]
 pub struct V1ApiDoc;

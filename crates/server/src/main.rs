@@ -3,10 +3,14 @@ use std::net::SocketAddr;
 
 use axum_app_config::ServerConfig;
 use server::{
-    api::router::api_routes, appstate::AppState, connection::{
+    api::router::api_routes,
+    appstate::AppState,
+    connection::{
         database_conn::{establish_read_connection, establish_write_connection},
         http_conn::create_http_client,
-    }, middleware::cors::cors_layer, utils::logger::init_tracing
+    },
+    middleware::cors::cors_layer,
+    utils::logger::init_tracing,
 };
 use tracing::error;
 
