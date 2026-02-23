@@ -1,7 +1,7 @@
 use reqwest::Client as HttpClient;
 use sea_orm::DatabaseConnection as PostgresqlClient;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct AppState {
     pub http_client: HttpClient,
     pub write_db: PostgresqlClient,
