@@ -1,5 +1,6 @@
 use axum::Router;
 use std::net::SocketAddr;
+use tokio::signal;
 
 use axum_app_config::ServerConfig;
 use server::{
@@ -12,7 +13,31 @@ use server::{
     middleware::cors::cors_layer,
     utils::logger::init_tracing,
 };
-use tracing::error;
+use tracing::{error, info};
+
+async fn shutdown_signal() {
+    let ctrl_c = async {
+        signal::ctrl_c()
+            .await
+            .expect("failed to install Ctrl+C handler");
+    };
+
+    #[cfg(unix)]
+    let terminate = async {
+        signal::unix::signal(signal::unix::SignalKind::terminate())
+            .expect("failed to install signal handler")
+            .recv()
+            .await;
+    };
+
+    #[cfg(not(unix))]
+    let terminate = std::future::pending::<()>();
+
+    tokio::select! {
+        _ = ctrl_c => {},
+        _ = terminate => {},
+    }
+}
 
 async fn run_server() -> anyhow::Result<()> {
     let write_db = establish_write_connection().await;
@@ -41,11 +66,13 @@ async fn run_server() -> anyhow::Result<()> {
         .with_state(state);
 
     let listener = tokio::net::TcpListener::bind(&server_url).await?;
+    info!("Server running on {}", server_url);
 
     axum::serve(
         listener,
         app.into_make_service_with_connect_info::<SocketAddr>(),
     )
+    .with_graceful_shutdown(shutdown_signal())
     .await?;
 
     Ok(())

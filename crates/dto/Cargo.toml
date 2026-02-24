@@ -13,3 +13,5 @@ serde = { workspace = true, features = ["derive"] }
 validator = { workspace = true, features = ["derive"] }
 utoipa.workspace = true
 axum.workspace = true
+uuid = { workspace = true, features = ["serde"] }
+chrono = { workspace = true, features = ["serde"] }
